@@ -3,17 +3,17 @@ package by.htp.belavia.driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import by.htp.belavia.util.PropertyManager;
+
 public class WebDriverSingleton {
 	private static WebDriver driver;
-	private static final String CHROME = "webdriver.chrome.driver";
-	private static final String CHROME_PATH = "C:\\Program Files\\ChromeDriver\\chromedriver.exe";
 
 	private WebDriverSingleton() {
 	}
 
 	public static WebDriver getDriver() {
 		if (driver == null) {
-			System.setProperty(CHROME, CHROME_PATH);
+			System.setProperty(PropertyManager.getChrome(), PropertyManager.getChromePath());
 			driver = new ChromeDriver();
 			System.out.println("Driver started");
 		}
