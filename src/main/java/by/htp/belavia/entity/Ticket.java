@@ -4,20 +4,18 @@ import java.util.GregorianCalendar;
 
 public class Ticket {
 	private GregorianCalendar departureDate;
-	private GregorianCalendar departuretime;
-	private String typeFlights;
+	private String departuretime;
 	private double price;
-
-	public Ticket(GregorianCalendar departureDate, GregorianCalendar departuretime, String typeFlights, double price) {
-		this.departureDate = departureDate;
-		this.departuretime = departuretime;
-		this.typeFlights = typeFlights;
-		this.price = price;
-	}
 
 	public Ticket() {
 		super();
 
+	}
+
+	public Ticket(GregorianCalendar departureDate, String departuretime, double price) {
+		this.departureDate = departureDate;
+		this.departuretime = departuretime;
+		this.price = price;
 	}
 
 	public GregorianCalendar getDepartureDate() {
@@ -28,20 +26,12 @@ public class Ticket {
 		this.departureDate = departureDate;
 	}
 
-	public GregorianCalendar getDeparturetime() {
+	public String getDeparturetime() {
 		return departuretime;
 	}
 
-	public void setDeparturetime(GregorianCalendar departuretime) {
+	public void setDeparturetime(String departuretime) {
 		this.departuretime = departuretime;
-	}
-
-	public String getTypeFlights() {
-		return typeFlights;
-	}
-
-	public void setTypeFlights(String typeFlights) {
-		this.typeFlights = typeFlights;
 	}
 
 	public double getPrice() {
@@ -61,7 +51,6 @@ public class Ticket {
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((typeFlights == null) ? 0 : typeFlights.hashCode());
 		return result;
 	}
 
@@ -86,18 +75,12 @@ public class Ticket {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (typeFlights == null) {
-			if (other.typeFlights != null)
-				return false;
-		} else if (!typeFlights.equals(other.typeFlights))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Ticket [departureDate=" + departureDate + ", departuretime=" + departuretime + ", typeFlights="
-				+ typeFlights + ", price=" + price + "]";
+		return "Ticket [departureDate=" + departureDate + ", departuretime=" + departuretime + ", price=" + price + "]";
 	}
 
 }

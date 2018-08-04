@@ -18,12 +18,9 @@ public class MainPage extends PageObject {
 	private final By selectRadioButtonWay = By.xpath("//label[@for='JourneySpan_Ow']");
 	private final By chousenDateDeparture = By.xpath("//*[@id='datepicker']/div/div[1]/table/tbody//td[a=15]");
 	private final By buttonFind = By.xpath("//button[contains(@class, 'btn btn-b2-green')]");
-	// private final By selectDate =
-	// By.xpath("//*[@id='ibe']/div/form/div[3]/div[1]/div/a");
 
-	// private By chooseCalendarTariffs =
-	// By.xpath("//*[@id='outbound']/div[1]/div/div[2]/a");
-
+	
+	
 	public MainPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(this.driver, this);

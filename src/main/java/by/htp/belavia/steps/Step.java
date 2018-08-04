@@ -8,6 +8,7 @@ import by.htp.belavia.pages.TicketPage;
 
 public class Step {
 	private WebDriver driver;
+	private TicketPage ticketPage;
 
 	public void initDriver() {
 		driver = WebDriverSingleton.getDriver();
@@ -26,10 +27,16 @@ public class Step {
 		main.chouseDate();
 	}
 
-	public TicketPage clickButtonSearch() {
+	public void clickButtonSearch() {
 		MainPage mainPage = new MainPage(driver);
 		mainPage.clickButton();
-		return new TicketPage(driver);
+		ticketPage = new TicketPage(driver);
 	}
-	
+
+	public TicketPage getListOfTicket() {
+		ticketPage = new TicketPage(driver);
+		ticketPage.getListOfTicket();
+		return ticketPage;
+	}
+
 }

@@ -1,5 +1,6 @@
 package by.htp.belavia;
 
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,15 +17,13 @@ public class TestMainBelaviaOneWay {
 	}
 
 	@Test
-	public void Search() {
+	public void SearchTicketOnWay() {
 		step.startSearh();
-
-	}
-	@Test void findTicket() {
 		step.clickButtonSearch();
+		step.getListOfTicket();
 	}
 
-	@AfterTest(description = "Stop Browser")
+	@AfterSuite(description = "Stop Browser")
 	public void stopBrowser() throws InterruptedException {
 		Thread.sleep(10000);
 		step.closeDriver();
