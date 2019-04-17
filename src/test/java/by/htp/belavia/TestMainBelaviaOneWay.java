@@ -23,6 +23,7 @@ public class TestMainBelaviaOneWay {
 
 	@AfterSuite(description = "Stop Browser")
 	public void stopBrowser() throws InterruptedException {
+//	    TO DO Take screen short if test failed
 		step.closeDriver();
 	}
 }
