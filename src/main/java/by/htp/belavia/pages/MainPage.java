@@ -1,12 +1,10 @@
 package by.htp.belavia.pages;
 
+import by.htp.belavia.entity.Element;
 import by.htp.belavia.util.PropertyManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.lang.String.format;
 
@@ -34,47 +32,35 @@ public class MainPage extends PageObject {
 		System.out.println("MainPage opened");
 	}
 
-	public void chousePlaceFrom(String from) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.elementToBeClickable(locationFrom));
-		WebElement element = driver.findElement(locationFrom);
-		element.sendKeys(from);
-		driver.findElement(chooseFrom).click();
-		element.sendKeys(Keys.ENTER);
+	public MainPage chousePlaceFrom(String from) {
+		new Element(locationFrom).sendKeys(from);
+		Element chouseFrom=new Element(chooseFrom);
+		chouseFrom.click();
+		new Element(locationFrom).sendKeys(Keys.ENTER);
+		return this;
 
 	}
 
-	public void chousePlaceWhere(String where) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.elementToBeClickable(locationWhere));
-		WebElement element = driver.findElement(locationWhere);
-		element.sendKeys(where);
-		element.sendKeys(Keys.ENTER);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public MainPage chousePlaceWhere(String where) {
+		new Element(locationWhere).sendKeys(where);
+		new Element(locationWhere).sendKeys(Keys.ENTER);
+		return this;
 	}
 
-	public void chouseOneWay() {
-		WebElement button = driver.findElement(selectRadioButtonWay);
-		button.click();
+	public MainPage chouseOneWay() {
+		new Element(selectRadioButtonWay).click();
+		return this;
 	}
 
-	public void chouseDate() {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.elementToBeClickable(chousenDateDeparture));
-		WebElement date = driver.findElement(chousenDateDeparture);
-		date.click();
-		date.sendKeys(Keys.TAB);
+	public MainPage chouseDate() {
+		new Element(chousenDateDeparture).click();
+		new Element(chousenDateDeparture).sendKeys(Keys.TAB);
+		return this;
 	}
 
-	public void clickButton() {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(buttonFind));
-		WebElement button = driver.findElement(buttonFind);
-		button.click();
+	public TicketPage clickButton() {
+		new Element(buttonFind).click();
+		return new TicketPage();
 	}
 	
 }

@@ -7,28 +7,26 @@ import by.htp.belavia.pages.TicketPage;
 public class Step {
 
 
+    public static void closeDriver() {
+        WebDriverSingleton.closeDriver();
+    }
 
-	public static void closeDriver() {
-		WebDriverSingleton.closeDriver();
-	}
+    public static void startSearh() {
+        new MainPage()
+                .chouseOneWay()
+                .chousePlaceFrom("Минск")
+                .chousePlaceWhere("Рига")
+                .chouseDate();
+    }
 
-	public static void startSearh() {
-		MainPage main = new MainPage();
-		main.chouseOneWay();
-		main.chousePlaceFrom("Минск");
-		main.chousePlaceWhere("Рига");
-		main.chouseDate();
-	}
+    public static void clickButtonSearch() {
+        new MainPage().clickButton();
+    }
 
-	public static void clickButtonSearch() {
-		MainPage mainPage = new MainPage();
-		mainPage.clickButton();
-	}
-
-	public static TicketPage getListOfTicket() {
-		TicketPage ticketPage = new TicketPage();
-		ticketPage.getListOfTicket();
-		return ticketPage;
-	}
+    public static TicketPage getListOfTicket() {
+        TicketPage ticketPage = new TicketPage();
+        ticketPage.getListOfTicket();
+        return ticketPage;
+    }
 
 }
