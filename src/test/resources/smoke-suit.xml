@@ -3,11 +3,14 @@
 
 <suite name="smoke-suit">
 	<test name="SimpleTest">
-		<groups>
-			<run>
-				<include name="Test" />
-			</run>
-		</groups>
+		<!-- <packages>
+			<package name="by.htp.belavia">
+			</package>
+		</packages> -->
+		<classes>
+			<class name="by.htp.belavia.TestMainBelaviaOneWay"></class>
+		</classes>
+
 	</test>
 
 </suite>

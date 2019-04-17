@@ -1,14 +1,14 @@
 package by.htp.belavia.pages;
 
+import by.htp.belavia.util.PropertyManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import by.htp.belavia.util.PropertyManager;
+import static java.lang.String.format;
 
 public class MainPage extends PageObject {
 
@@ -21,14 +21,16 @@ public class MainPage extends PageObject {
 
 	
 	
-	public MainPage(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(this.driver, this);
-	}
 
+    public MainPage() {
+        super();
+        PageFactory.initElements(this.driver, this);
+        openPage();
+    }
 	@Override
-	public void openPage() {
+	protected void openPage() {
 		driver.navigate().to(PropertyManager.getBaseUrl());
+		System.out.println(format("Opened the web site: %s",driver.getTitle()));
 		System.out.println("MainPage opened");
 	}
 
@@ -68,11 +70,11 @@ public class MainPage extends PageObject {
 		date.sendKeys(Keys.TAB);
 	}
 
-	public TicketPage clickButton() {
+	public void clickButton() {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(buttonFind));
 		WebElement button = driver.findElement(buttonFind);
 		button.click();
-		return new TicketPage(driver);
 	}
+	
 }

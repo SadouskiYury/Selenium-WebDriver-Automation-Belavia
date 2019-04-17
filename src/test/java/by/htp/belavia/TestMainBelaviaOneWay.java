@@ -1,19 +1,17 @@
 package by.htp.belavia;
 
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
+import by.htp.belavia.driver.WebDriverSingleton;
 import by.htp.belavia.steps.Step;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 public class TestMainBelaviaOneWay {
 	private Step step;
 
-	@BeforeMethod(description = "Init browser")
+	@BeforeSuite(description = "Init browser")
 	public void setUp() {
-		step = new Step();
-		step.initDriver();
+        WebDriverSingleton.getDriver();
 	}
 
 	@Test
@@ -25,7 +23,6 @@ public class TestMainBelaviaOneWay {
 
 	@AfterSuite(description = "Stop Browser")
 	public void stopBrowser() throws InterruptedException {
-		Thread.sleep(10000);
 		step.closeDriver();
 	}
 }
